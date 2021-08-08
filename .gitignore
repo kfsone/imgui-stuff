@@ -1,0 +1,8 @@
+build/
+build.wsl/
+build.mac/
+build.linux/
+.vs/
+.vscode/
+.idea/
+imgui.ini
