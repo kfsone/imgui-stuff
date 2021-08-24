@@ -13,12 +13,11 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(imguiwrap)
 
-ADD_EXECUTABLE(
-	imgui-stuff
-	main.cpp
-  )
+include_directories(${CMAKE_SOURCE_DIR})
 
-TARGET_LINK_LIBRARIES(
-	imgui-stuff
-	PUBLIC imguiwrap
-)
+MACRO(gui_executable target)
+	ADD_EXECUTABLE(${target} WIN32 items/${target}/main.cpp wrapper.h)
+	TARGET_LINK_LIBRARIES(${target} PUBLIC imguiwrap)
+ENDMACRO()
+
+gui_executable(focus-window)
